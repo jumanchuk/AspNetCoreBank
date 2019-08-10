@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreBank.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190806180848_AddClients")]
-    partial class AddClients
+    [Migration("20190807201950_Clients")]
+    partial class Clients
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,8 @@ namespace AspNetCoreBank.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("Document");
+
                     b.Property<string>("Lastname")
                         .IsRequired();
 
@@ -36,8 +38,8 @@ namespace AspNetCoreBank.Migrations
                     b.ToTable("Clients");
 
                     b.HasData(
-                        new { Id = new Guid("32ec5934-0864-4615-a9bc-4a95e437c8ea"), Date = new DateTime(2019, 8, 6, 15, 8, 48, 732, DateTimeKind.Local), Lastname = "Umanchuk", Name = "Jury" },
-                        new { Id = new Guid("993d74a1-4445-46b4-885c-47f427bf99d5"), Date = new DateTime(2019, 8, 6, 15, 8, 48, 732, DateTimeKind.Local), Lastname = "Perez", Name = "Linda" }
+                        new { Id = new Guid("7a42605e-f063-4318-a2dd-6676a8838bcf"), Date = new DateTime(2019, 8, 7, 17, 19, 50, 799, DateTimeKind.Local), Document = 95699120, Lastname = "Umanchuk", Name = "Jury" },
+                        new { Id = new Guid("78461615-92f6-497d-aa2c-c296b24b6978"), Date = new DateTime(2019, 8, 7, 17, 19, 50, 799, DateTimeKind.Local), Document = 95885263, Lastname = "Perez", Name = "Linda" }
                     );
                 });
 #pragma warning restore 612, 618

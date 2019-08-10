@@ -7,13 +7,14 @@ namespace AspNetCoreBank.Models
     {
         public Guid Id { get; set; }
 
+        public int Document { get; set; }
+
         [Required]
         public string Name { get; set; }
 
         [Required]
         public string Lastname { get; set; }
 
-        [Required]
         public DateTime Date { get; set; }
 
     }

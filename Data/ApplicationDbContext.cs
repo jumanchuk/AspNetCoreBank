@@ -9,6 +9,7 @@ namespace AspNetCoreBank.Data
 {
     public class ApplicationDbContext: DbContext //Que es
 {
+    
 public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
 {
 }
@@ -18,18 +19,19 @@ protected override void OnModelCreating(ModelBuilder builder)
         builder.Entity<ClientRow>().HasData(
                 new ClientRow {
                     Id = Guid.NewGuid(),
+                    Document = 95699120,
                     Name = "Jury",
                     Lastname = "Umanchuk",
                     Date = DateTime.Now},
                 new ClientRow {
                     Id = Guid.NewGuid(),
+                    Document = 95885263,
                     Name = "Linda",
                     Lastname = "Perez",
                     Date = DateTime.Now}
                     );
 
         base.OnModelCreating(builder);
-// ...
 }
 }
 

@@ -6,28 +6,33 @@ ViewData["Title"] = "Busqueda de Cliente";
 }
 
 <div class="panel panel-default todo-panel">
-<div class="panel-heading">@ViewData["Title"]</div>
-<table class="table table-hover">
-<thead>
-<tr>
-<td>Ver</td>
-<td>Nombre</td>
-<td>Apellido</td>
-<td>Fecha de Alta</td>
-</tr>
-</thead>
-@foreach (var Client in Model.Clients)
-{
-<tr> 
-<td><button class="btn btn-default glyphicon glyphicon-search" type="button"></button></td>
-<td>@Client.Name</td>
-<td>@Client.Lastname</td>
-<td>@Client.Date.ToString("dd/mm/yyyy")</td>
-</tr>
-}
-</table>
-<div class="panel-footer add-item-form">
-<!-- TODO: Add item form -->
-</div>
-</div>
+    <div class="panel-heading">@ViewData["Title"]</div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Ver</td>
+                <td>Documento</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Fecha de Alta</td>
+            </tr>
+        </thead>
+        @foreach (var Client in Model.Clients)
+        {
+            <tr>
+                <form asp-action="Operations" method="POST">
+                    <td><button class="btn btn-default glyphicon glyphicon-search" type="submit"></button></td>
+                    <td asp-for="Document">@Client.Document</td>
+                    <td>@Client.Name</td>
+                    <td>@Client.Lastname</td>
+                    <td>@Client.Date.ToString("dd/mm/yyyy")</td>
+                </form>
+            </tr>
+        }
+    </table>
 
+    <div class="panel-footer add-item-form">
+        @await Html.PartialAsync("SearchClientPartial", new ClientRow())
+    </div>
+    
+</div>

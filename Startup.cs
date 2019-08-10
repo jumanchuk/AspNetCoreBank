@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AspNetCoreBank.Services;
 
+
 namespace AspNetCoreBank
 {
     public class Startup
@@ -30,7 +31,7 @@ namespace AspNetCoreBank
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IClientService, FakeClientService>();
+            services.AddSingleton<IClientService, ClientService>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -39,13 +40,11 @@ namespace AspNetCoreBank
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IClientService, FakeClientService>();
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                        services.AddScoped<IClientService, ClientService>();
 
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

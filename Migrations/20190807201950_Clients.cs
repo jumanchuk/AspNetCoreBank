@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreBank.Migrations
 {
-    public partial class AddClients : Migration
+    public partial class Clients : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,6 +12,7 @@ namespace AspNetCoreBank.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    Document = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Lastname = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false)
@@ -23,13 +24,13 @@ namespace AspNetCoreBank.Migrations
 
             migrationBuilder.InsertData(
                 table: "Clients",
-                columns: new[] { "Id", "Date", "Lastname", "Name" },
-                values: new object[] { new Guid("32ec5934-0864-4615-a9bc-4a95e437c8ea"), new DateTime(2019, 8, 6, 15, 8, 48, 732, DateTimeKind.Local), "Umanchuk", "Jury" });
+                columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
+                values: new object[] { new Guid("7a42605e-f063-4318-a2dd-6676a8838bcf"), new DateTime(2019, 8, 7, 17, 19, 50, 799, DateTimeKind.Local), 95699120, "Umanchuk", "Jury" });
 
             migrationBuilder.InsertData(
                 table: "Clients",
-                columns: new[] { "Id", "Date", "Lastname", "Name" },
-                values: new object[] { new Guid("993d74a1-4445-46b4-885c-47f427bf99d5"), new DateTime(2019, 8, 6, 15, 8, 48, 732, DateTimeKind.Local), "Perez", "Linda" });
+                columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
+                values: new object[] { new Guid("78461615-92f6-497d-aa2c-c296b24b6978"), new DateTime(2019, 8, 7, 17, 19, 50, 799, DateTimeKind.Local), 95885263, "Perez", "Linda" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
