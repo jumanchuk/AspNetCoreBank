@@ -9,6 +9,7 @@ namespace AspNetCoreBank.Controllers
   {
       private readonly IClientService _ClientService;
       public ClientController(IClientService ClientService) => _ClientService = ClientService;
+        
         public async Task<IActionResult> Index(int Document)
         {
           
@@ -22,6 +23,6 @@ namespace AspNetCoreBank.Controllers
           };
         // Render view using the model
         return View(model);
-        } 
+        }
   }
 }
