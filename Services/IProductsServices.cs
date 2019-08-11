@@ -3,8 +3,9 @@ using AspNetCoreBank.Models;
 
 namespace AspNetCoreBank.Services
 {
-    public interface IClientService
+    public interface IProductsService
     {
-        Task<Client[]> GetClient(int Document);
+        Task<Products[]> GetProducts(int Document);
+
     }
 }

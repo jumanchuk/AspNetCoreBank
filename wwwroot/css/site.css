@@ -50,13 +50,6 @@ div.todo-panel {
         text-align: center;
       }
 
-    .icon-operation {
-        
-        font-size:120px;
-        padding: 4%;
-        
-    }
-    
     .round-edges{
 
         border-radius: 10px 10px 10px 10px;
@@ -81,3 +74,27 @@ div.todo-panel {
     bottom:53px;
     right:-30px;
 }
+
+/* Vertical menu */
+
+.vertical-menu {
+    padding: 30% 25% 25% 15%;
+    width: 200px;
+  }
+  
+  .vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc;
+  }
+  
+  .vertical-menu a.active {
+    background-color: rgb(178, 182, 178);
+    color: white;
+  }

@@ -9,18 +9,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreBank.Services
 {
-    public class ClientService : IClientService
+    public class ProductsService : IProductsService
     {
         private readonly ApplicationDbContext _context;
-        public ClientService(ApplicationDbContext context)
+        public ProductsService(ApplicationDbContext context)
         {
-            _context = context;
+        _context = context;
         }
-        public async Task<Client[]> GetClient(int Document)
+        public async Task<Products[]> GetProducts(int Document)
         {
-            return await _context.Clients
-            .Where(x => x.Document == Document)
+            return await _context.Products
+            .Where(x => x.Document == 95699120) // Como pasar parametro desde otra vista
             .ToArrayAsync();
         }
     }
 }
+
