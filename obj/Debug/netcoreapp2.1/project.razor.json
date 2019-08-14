@@ -2874,6 +2874,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Products\\Index.cshtml",
+      "TargetPath": "Views\\Products\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Client\\SearchClientPartial.cshtml",
       "TargetPath": "Views\\Client\\SearchClientPartial.cshtml",
       "FileKind": "mvc"

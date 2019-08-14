@@ -32,7 +32,6 @@ namespace AspNetCoreBank
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IClientService, ClientService>();
-            services.AddSingleton<IProductsService, ProductsService>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -44,10 +43,6 @@ namespace AspNetCoreBank
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
                         services.AddScoped<IClientService, ClientService>();
-
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-                        services.AddScoped<IProductsService, ProductsService>();
 
                 services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

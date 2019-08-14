@@ -13231,11 +13231,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
+      "projectUniqueName": "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
       "projectName": "AspNetCoreBank",
-      "projectPath": "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
+      "projectPath": "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
       "packagesPath": "C:\\Users\\juryu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\obj\\",
+      "outputPath": "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

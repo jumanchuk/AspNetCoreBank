@@ -14,13 +14,13 @@ namespace AspNetCoreBank.Services
         private readonly ApplicationDbContext _context;
         public ClientService(ApplicationDbContext context)
         {
-            _context = context;
+        _context = context;
         }
-        public async Task<Client[]> GetClient(int Document)
+        public async Task<ClientRow[]> GetClientRows(int Document)
         {
-            return await _context.Clients
-            .Where(x => x.Document == Document)
-            .ToArrayAsync();
+        return await _context.Clients
+        .Where(x => x.Document == Document)
+        .ToArrayAsync();
         }
     }
 }
