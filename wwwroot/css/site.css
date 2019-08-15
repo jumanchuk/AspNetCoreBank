@@ -98,3 +98,12 @@ div.todo-panel {
     background-color: rgb(178, 182, 178);
     color: white;
   }
+
+  .balance {
+
+      float:right; 
+      padding-right:25px;
+      color: black;
+      font-size: larger;
+      font-weight: bolder;
+  }

@@ -6,18 +6,18 @@
         <a class="active">Productos</a>
         @foreach (var Product in Model.Products)
         {
-            <form asp-action="Index" method="POST">
+           <a> <form asp-action="Index" method="POST">
               <button class="btn btn-link" type="submit">@Product.ProductType.name</button>
               <input name="ClientId" Type="hidden" value="@Product.ClientId">
               <input name="Id" Type="hidden" value="@Product.Id">
-            </form>
+            </form></a>
         }
     </div>
   </div>
 
   <div class="col-lg-10">
     <br>
-      <div style="float:right; padding-right:25px;">Balance:
+      <div class="balance">Balance:
     @foreach (var ProductDetail in Model.ProductDetail)
     {
       @ProductDetail.current_balance
