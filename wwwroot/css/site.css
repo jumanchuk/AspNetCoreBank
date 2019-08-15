@@ -88,17 +88,32 @@ div.todo-panel {
     display: block;
     padding: 12px;
     text-decoration: none;
+  
   }
   
-  .vertical-menu a:hover {
-    background-color: #ccc;
-  }
-  
-  .vertical-menu a.active {
-    background-color: rgb(178, 182, 178);
-    color: white;
+  .btn-menu{
+
+    text-decoration: none !important; 
+    color:grey !important;
+    border: none !important;
+    width: 100%  !important;
+    height: 100%  !important;
+    margin: 10 0 10 0 !important;
+    padding: 10 0 10 0 !important;
+    font-size: 15px !important;
+    outline: none !important;
   }
 
+  .btn-menu-div{
+    background-color:lightgrey;
+    
+      }
+  .btn-menu-div:hover{
+    background-color: rgb(236, 234, 234);
+    color:grey !important;
+
+  }
+  
   .balance {
 
       float:right; 
@@ -106,4 +121,15 @@ div.todo-panel {
       color: black;
       font-size: larger;
       font-weight: bolder;
+  }
+
+  .productos {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .productos li{
+    display: inline-block;
+
   }

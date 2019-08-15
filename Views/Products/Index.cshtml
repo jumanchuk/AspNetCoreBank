@@ -1,18 +1,22 @@
 
 <div class="row round-edges">
 
-  <div class="col-lg-2">
-    <div class="vertical-menu">
-        <a class="active">Productos</a>
+  <div class="col-lg-2" style="padding-top:3.5%;">
+    <ul class="productos"> 
+        <div style="background-color: dimgrey; font-size:15px; color: white; ">Productos</div>
         @foreach (var Product in Model.Products)
         {
-           <a> <form asp-action="Index" method="POST">
-              <button class="btn btn-link" type="submit">@Product.ProductType.name</button>
+          <div class="btn-menu-div">
+           <li >
+             <form asp-action="Index" method="POST">
+              <button type="submit" class="btn  btn-link btn-menu btn-block">@Product.ProductType.name</button>
               <input name="ClientId" Type="hidden" value="@Product.ClientId">
               <input name="Id" Type="hidden" value="@Product.Id">
-            </form></a>
+            </form>
+          </li>
+        </div>
         }
-    </div>
+    </ul>
   </div>
 
   <div class="col-lg-10">
