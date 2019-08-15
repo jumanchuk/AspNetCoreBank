@@ -29,6 +29,13 @@ namespace AspNetCoreBank.Services
             .Where(x => x.Id == Id)// Como pasar parametro desde otra vista
             .ToArrayAsync();
         }
+
+        public async Task<Movements[]> GetProductMovementsById(int Id)
+        {
+            return await _context.Movements
+            .Where(x => x.Id == Id)// Como pasar parametro desde otra vista
+            .ToArrayAsync();
+        }
     }
 }
 

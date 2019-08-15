@@ -10,6 +10,8 @@ namespace AspNetCoreBank.Services
 
         Task<Products[]> GetProductDetailById(int Id);
 
+        Task<Movements[]> GetProductMovementsById(int Id);
+        
     }
     
 }

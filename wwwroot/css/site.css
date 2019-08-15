@@ -105,18 +105,19 @@ div.todo-panel {
   }
 
   .btn-menu-div{
-    background-color:lightgrey;
+    background-color: rgb(236, 234, 234);;
     
       }
   .btn-menu-div:hover{
-    background-color: rgb(236, 234, 234);
+    background-color: lightgrey ;
     color:grey !important;
 
   }
   
   .balance {
 
-      float:right; 
+      float:right;
+      padding-top:20px;
       padding-right:25px;
       color: black;
       font-size: larger;
@@ -131,5 +132,4 @@ div.todo-panel {
   
   .productos li{
     display: inline-block;
-
   }

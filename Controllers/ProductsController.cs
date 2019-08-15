@@ -18,12 +18,14 @@ namespace AspNetCoreBank.Controllers
         // Get Products from database
         var Products = await _ProductsService.GetProductsByClientId(ClientId);
         var productDetail = await _ProductsService.GetProductDetailById(Id);
-        
+        var productMovements = await _ProductsService.GetProductMovementsById(Id);
+
         // Put Products into a model
           var model = new ProductsViewModel()
           {
               Products = Products,
-              ProductDetail = productDetail
+              ProductDetail = productDetail,
+              ProductMovements = productMovements
           };
         // Render view using the model
         return View(model);

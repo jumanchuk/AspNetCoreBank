@@ -24,6 +24,21 @@ namespace AspNetCoreBank.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MovementsType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Movements_type = table.Column<int>(nullable: false),
+                    name = table.Column<string>(nullable: true),
+                    status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovementsType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductTypes",
                 columns: table => new
                 {
@@ -44,11 +59,11 @@ namespace AspNetCoreBank.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    ClientId = table.Column<int>(nullable: false),
                     current_balance = table.Column<decimal>(nullable: false),
-                    status = table.Column<decimal>(nullable: false),
+                    status = table.Column<int>(nullable: false),
                     Opening_date = table.Column<DateTime>(nullable: false),
                     Closing_date = table.Column<DateTime>(nullable: true),
-                    ClientId = table.Column<int>(nullable: true),
                     ProductTypeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -59,7 +74,7 @@ namespace AspNetCoreBank.Migrations
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_ProductTypes_ProductTypeId",
                         column: x => x.ProductTypeId,
@@ -68,15 +83,55 @@ namespace AspNetCoreBank.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Clients",
-                columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
-                values: new object[] { 1, new DateTime(2019, 8, 11, 20, 56, 13, 951, DateTimeKind.Local), 95699120, "Umanchuk", "Jury" });
+            migrationBuilder.CreateTable(
+                name: "Movements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductId = table.Column<int>(nullable: false),
+                    amount = table.Column<decimal>(nullable: false),
+                    status = table.Column<int>(nullable: false),
+                    date = table.Column<DateTime>(nullable: false),
+                    ProductsId = table.Column<int>(nullable: true),
+                    MovementsTypeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Movements_MovementsType_MovementsTypeId",
+                        column: x => x.MovementsTypeId,
+                        principalTable: "MovementsType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Movements_Products_ProductsId",
+                        column: x => x.ProductsId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
-                values: new object[] { 2, new DateTime(2019, 8, 11, 20, 56, 13, 957, DateTimeKind.Local), 95885263, "Perez", "Linda" });
+                values: new object[] { 1, new DateTime(2019, 8, 15, 16, 51, 33, 535, DateTimeKind.Local), 95699120, "Umanchuk", "Jury" });
+
+            migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
+                values: new object[] { 2, new DateTime(2019, 8, 15, 16, 51, 33, 536, DateTimeKind.Local), 95885263, "Perez", "Linda" });
+
+            migrationBuilder.InsertData(
+                table: "MovementsType",
+                columns: new[] { "Id", "Movements_type", "name", "status" },
+                values: new object[] { 1, 1, "Deposito", 1 });
+
+            migrationBuilder.InsertData(
+                table: "MovementsType",
+                columns: new[] { "Id", "Movements_type", "name", "status" },
+                values: new object[] { 2, 2, "Transferencia", 1 });
 
             migrationBuilder.InsertData(
                 table: "ProductTypes",
@@ -94,14 +149,34 @@ namespace AspNetCoreBank.Migrations
                 values: new object[] { 3, 2, "Prestamo Personal", 3 });
 
             migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "ClientId", "Closing_date", "Opening_date", "ProductTypeId", "current_balance", "status" },
-                values: new object[] { 1, 1, null, new DateTime(2019, 8, 11, 20, 56, 13, 958, DateTimeKind.Local), 1, 0m, 1m });
+                table: "Movements",
+                columns: new[] { "Id", "MovementsTypeId", "ProductId", "ProductsId", "amount", "date", "status" },
+                values: new object[] { 1, 1, 1, null, 150m, new DateTime(2019, 8, 15, 16, 51, 33, 538, DateTimeKind.Local), 1 });
+
+            migrationBuilder.InsertData(
+                table: "Movements",
+                columns: new[] { "Id", "MovementsTypeId", "ProductId", "ProductsId", "amount", "date", "status" },
+                values: new object[] { 2, 2, 1, null, 100m, new DateTime(2019, 8, 15, 16, 51, 33, 538, DateTimeKind.Local), 1 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ClientId", "Closing_date", "Opening_date", "ProductTypeId", "current_balance", "status" },
-                values: new object[] { 2, 1, null, new DateTime(2019, 8, 11, 20, 56, 13, 959, DateTimeKind.Local), 2, 0m, 1m });
+                values: new object[] { 1, 1, null, new DateTime(2019, 8, 15, 16, 51, 33, 537, DateTimeKind.Local), 1, 150m, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "ClientId", "Closing_date", "Opening_date", "ProductTypeId", "current_balance", "status" },
+                values: new object[] { 2, 1, null, new DateTime(2019, 8, 15, 16, 51, 33, 537, DateTimeKind.Local), 2, 100m, 1 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movements_MovementsTypeId",
+                table: "Movements",
+                column: "MovementsTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movements_ProductsId",
+                table: "Movements",
+                column: "ProductsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ClientId",
@@ -116,6 +191,12 @@ namespace AspNetCoreBank.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Movements");
+
+            migrationBuilder.DropTable(
+                name: "MovementsType");
+
             migrationBuilder.DropTable(
                 name: "Products");
 
