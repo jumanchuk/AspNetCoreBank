@@ -31,8 +31,6 @@ namespace AspNetCoreBank
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IClientService, ClientService>();
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -40,11 +38,15 @@ namespace AspNetCoreBank
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-                        services.AddScoped<IClientService, ClientService>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options
+                    .UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+                    .UseLazyLoadingProxies()
+            );
+            services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IProductsService, ProductsService>();
 
-                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AspNetCoreBank.Models;
 using AspNetCoreBank.Services;
@@ -11,20 +12,23 @@ namespace AspNetCoreBank.Controllers
       
       public ProductsController(IProductsService ProductsService) => _ProductsService = ProductsService;
         
-        public async Task<IActionResult> Index(int Document)
+        public async Task<IActionResult> Index(int ClientId, int Id)
         {
           
         // Get Products from database
-        var Products = await _ProductsService.GetProducts(Document);
+        var Products = await _ProductsService.GetProductsByClientId(ClientId);
+        var productDetail = await _ProductsService.GetProductDetailById(Id);
         
         // Put Products into a model
           var model = new ProductsViewModel()
           {
-              Products = Products
+              Products = Products,
+              ProductDetail = productDetail
           };
         // Render view using the model
         return View(model);
-        
+                
         }
   }
+  
 }

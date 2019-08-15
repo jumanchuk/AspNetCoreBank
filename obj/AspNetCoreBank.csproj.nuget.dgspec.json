@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj": {}
+    "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj": {}
   },
   "projects": {
-    "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj": {
+    "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
+        "projectUniqueName": "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
         "projectName": "AspNetCoreBank",
-        "projectPath": "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
+        "projectPath": "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\AspNetCoreBank.csproj",
         "packagesPath": "C:\\Users\\juryu\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\obj\\",
+        "outputPath": "C:\\Users\\juryu\\Documents\\1.Repositorio\\AspNetCoreBank\\AspNetCoreBank\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -53,6 +53,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[2.1.11, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",

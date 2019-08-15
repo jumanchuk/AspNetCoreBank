@@ -20,19 +20,25 @@ ViewData["Title"] = "Busqueda de Cliente";
         @foreach (var Client in Model.Clients)
         {
             <tr>
-                <form asp-action="Operations" method="POST">
-                    <td><button class="btn btn-default glyphicon glyphicon-search" type="submit"></button></td>
-                    <td asp-for="Document">@Client.Document</td>
+                <form asp-controller="Products" asp-action="Index" method="POST">
+                    <td>
+                        <button class="btn btn-default glyphicon glyphicon-search" type="submit">
+                        <input type="hidden" name="ClientId" value="@Client.Id" />
+                    </td>
+                    <td>@Client.Document</td>
                     <td>@Client.Name</td>
                     <td>@Client.Lastname</td>
                     <td>@Client.Date.ToString("dd/mm/yyyy")</td>
                 </form>
             </tr>
         }
-    </table>
+    </table>    
+</div>
 
-    <div class="panel-footer add-item-form">
-        @await Html.PartialAsync("SearchClientPartial", new ClientRow())
-    </div>
-    
+<div class="cont-div">
+    <img class="down-right" src="\images\wallpaper-2.jpg"  >
+</div>
+
+<div>
+    @await Html.PartialAsync("SearchClientPartial", new Client())
 </div>

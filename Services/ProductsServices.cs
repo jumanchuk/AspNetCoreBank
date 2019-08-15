@@ -14,12 +14,19 @@ namespace AspNetCoreBank.Services
         private readonly ApplicationDbContext _context;
         public ProductsService(ApplicationDbContext context)
         {
-        _context = context;
+            _context = context;
         }
-        public async Task<Products[]> GetProducts(int Document)
+        public async Task<Products[]> GetProductsByClientId(int ClientId)
         {
             return await _context.Products
-            .Where(x => x.Document == 95699120) // Como pasar parametro desde otra vista
+            .Where(x => x.Client.Id == ClientId)// Como pasar parametro desde otra vista
+            .ToArrayAsync();
+        }
+
+        public async Task<Products[]> GetProductDetailById(int Id)
+        {
+            return await _context.Products
+            .Where(x => x.Id == Id)// Como pasar parametro desde otra vista
             .ToArrayAsync();
         }
     }

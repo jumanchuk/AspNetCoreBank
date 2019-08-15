@@ -1,51 +1,55 @@
-@{
-    ViewData["Title"] = "Products Page";
-}
-
 
 <div class="row round-edges">
-<div class="col-lg-2">
 
-<div class="vertical-menu">
-  <a href="#" class="active">Productos</a>
-        @foreach (var Products in Model.Products)
+  <div class="col-lg-2">
+    <div class="vertical-menu">
+        <a class="active">Productos</a>
+        @foreach (var Product in Model.Products)
         {
-    <a href="#">@Products.Product_type<p>@Products.Product_id</p></a>
+            <form asp-action="Index" method="POST">
+              <button class="btn btn-link" type="submit">@Product.ProductType.name</button>
+              <input name="ClientId" Type="hidden" value="@Product.ClientId">
+              <input name="Id" Type="hidden" value="@Product.Id">
+            </form>
         }
-</div>
+    </div>
+  </div>
 
-</div>
-<div class="col-lg-10">
-<br>
-  <div style="float:right; padding-right:25px;">Balance:</div>
-  <ul class="nav nav-tabs" style="padding:1%;">
-    <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-stats"></span> Historial</a></li>
-    <li><a data-toggle="tab" href="#option1"><span class="glyphicon glyphicon-save"></span> Depositos</a></li>
-    <li><a data-toggle="tab" href="#option2"><span class="glyphicon glyphicon-open"></span> Extracciones</a></li>
-    <li><a data-toggle="tab" href="#option3"><span class="fa fa-money"></span> Prestamos</a></li>
-    <li><a data-toggle="tab" href="#option4"><span class="glyphicon glyphicon-usd"></span> Compra de Divisas</a></li>
-  </ul>
+  <div class="col-lg-10">
+    <br>
+      <div style="float:right; padding-right:25px;">Balance:
+    @foreach (var ProductDetail in Model.ProductDetail)
+    {
+      @ProductDetail.current_balance
+    }
+      </div>
+      <ul class="nav nav-tabs" style="padding:1%;">
+        <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-stats"></span> Historial</a></li>
+        <li><a data-toggle="tab" href="#option1"><span class="glyphicon glyphicon-save"></span> Depositos</a></li>
+        <li><a data-toggle="tab" href="#option2"><span class="glyphicon glyphicon-open"></span> Extracciones</a></li>
+        <li><a data-toggle="tab" href="#option3"><span class="fa fa-money"></span> Prestamos</a></li>
+        <li><a data-toggle="tab" href="#option4"><span class="glyphicon glyphicon-usd"></span> Compra de Divisas</a></li>
+      </ul>
 
-<div class="tab-content" style="padding:1%; height:250px;">
-  <div id="home" class="tab-pane fade in active">
-    <h3>Historial de operaciones</h3>
-    <p>Detalle de movimientos.</p>
-  </div>
-  <div id="option1" class="tab-pane fade">
-    <h3>Depositos</h3>
-  </div>
-  <div id="option2" class="tab-pane fade">
-    <h3>Extracciones</h3>
-  </div>
-  <div id="option3" class="tab-pane fade">
-    <h3>Prestamos</h3>
-    <p>Some content in menu 2.</p>
-  </div>
-  <div id="option4" class="tab-pane fade">
-    <h3>Compra de Divisas</h3>
-  </div>
-</div>
-</div>
+    <div class="tab-content" style="padding:1%; height:250px;">
+      <div id="home" class="tab-pane fade in active">
+        <h3>Historial de operaciones</h3>
+        <p>Detalle de movimientos.</p>
+      </div>
+      <div id="option1" class="tab-pane fade">
+        <h3>Depositos</h3>
+      </div>
+      <div id="option2" class="tab-pane fade">
+        <h3>Extracciones</h3>
+      </div>
+      <div id="option3" class="tab-pane fade">
+        <h3>Prestamos</h3>
+        <p>Some content in menu 2.</p>
+      </div>
+      <div id="option4" class="tab-pane fade">
+        <h3>Compra de Divisas</h3>
+      </div>
+    </div>
 </div>
 
 <div class="cont-div">

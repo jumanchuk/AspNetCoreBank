@@ -2864,11 +2864,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Operations\\Index.cshtml",
-      "TargetPath": "Views\\Operations\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -2901,6 +2896,11 @@
     {
       "FilePath": "Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Products\\ProductsPartialView.cshtml",
+      "TargetPath": "Views\\Products\\ProductsPartialView.cshtml",
       "FileKind": "mvc"
     },
     {

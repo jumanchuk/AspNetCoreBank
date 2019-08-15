@@ -5,7 +5,6 @@ namespace AspNetCoreBank.Services
 {
     public interface IClientService
     {
-        Task<ClientRow[]> GetClientRows(int Document);
-
+        Task<Client[]> GetClient(int Document);
     }
 }
