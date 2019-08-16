@@ -1,0 +1,79 @@
+@model ProductsViewModel
+
+<div class="row round-edges">
+
+  <div class="col-lg-2" style="padding-top:3.5%;">
+    <ul class="productos"> 
+        <div style="background-color: #333; font-size:15px; color: white; ">Productos</div>
+        @foreach (var Product in Model.Products)
+        {
+          <div class="btn-menu-div">
+           <li >
+             <form asp-action="Index" method="POST">
+              <button type="submit" class="btn  btn-link btn-menu btn-block">@Product.ProductType.name</button>
+              <input name="ClientId" Type="hidden" value="@Product.ClientId">
+              <input name="Id" Type="hidden" value="@Product.Id">
+            </form>
+          </li>
+        </div>
+        }
+    </ul>
+  </div>
+
+  <div class="col-lg-10">
+    <br>
+      <div class="balance">Balance:@Model.ProductDetail.current_balance</div>
+      <ul class="nav nav-tabs" style="padding:1%;">
+        <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-stats"></span> Historial</a></li>
+        <li><a data-toggle="tab" href="#option1"><span class="glyphicon glyphicon-save"></span> Depositos</a></li>
+        <li><a data-toggle="tab" href="#option2"><span class="glyphicon glyphicon-open"></span> Extracciones</a></li>
+        <li><a data-toggle="tab" href="#option3"><span class="fa fa-money"></span> Prestamos</a></li>
+        <li><a data-toggle="tab" href="#option4"><span class="glyphicon glyphicon-usd"></span> Compra de Divisas</a></li>
+      </ul>
+
+    <div class="tab-content" style="padding:1%; ">
+      <div id="home" class="tab-pane fade in active">
+        <h3>Historial de operaciones</h3>
+        <p>Detalle de movimientos:</p>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo de Operación</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+             @foreach (var ProductMovements in Model.ProductMovements)
+               {
+              <tr>
+                <th scope="row">@ProductMovements.Id</th>
+                <td>@ProductMovements.MovementsType.name</td>
+                <td>@ProductMovements.amount</td>
+                <td>@ProductMovements.date</td>
+              </tr>
+               }
+            </tbody>
+          </table>
+      </div>
+      <div id="option1" class="tab-pane fade">
+        @*<div><p>@await Html.PartialAsync("../Movements/_Deposit", @new MovementViewModel {ProductId = Model.ProductDetail.Id})</p></div>*@
+          @await  Html.PartialAsync("../Movements/_Deposit", new MovementViewModel { Products = Model.ProductDetail, ProductTypes = Model.ProductTypes })
+      </div>
+      <div id="option2" class="tab-pane fade">
+        <div><p>@await Html.PartialAsync("WithDrawPartialView")</p></div>
+      </div>
+      <div id="option3" class="tab-pane fade">
+        <div><p>@await Html.PartialAsync("LoanPartialView")</p></div>
+      </div>
+      <div id="option4" class="tab-pane fade">
+        <div><p>@await Html.PartialAsync("ExchangePartialView ")</p></div>
+      </div>
+    </div>
+
+</div>
+
+<div class="cont-div">
+    <img class="down-right" src="\images\wallpaper-2.jpg"  >
+</div>

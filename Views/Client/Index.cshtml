@@ -1,0 +1,47 @@
+@model ClientsViewModel
+@using Humanizer
+
+@{
+ViewData["Title"] = "Busqueda de Cliente";
+}
+
+<div class="panel panel-default todo-panel">
+    <div class="panel-heading">@ViewData["Title"]</div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Ver</td>
+                <td>Documento</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Fecha de Alta</td>
+            </tr>
+        </thead>
+        @if (Model.Clients != null)
+        {
+            @foreach (var Client in Model.Clients)
+            {
+                <tr>
+                    <form asp-controller="Products" asp-action="Index" method="POST">
+                        <td>
+                            <button class="btn btn-default glyphicon glyphicon-search" type="submit">
+                            <input type="hidden" name="ClientId" value="@Client.Id" />
+                        </td>
+                        <td>@Client.Document</td>
+                        <td>@Client.Name</td>
+                        <td>@Client.Lastname</td>
+                        <td>@Client.Date.ToString("dd/mm/yyyy")</td>
+                    </form>
+                </tr>
+            }
+        }
+    </table>    
+</div>
+
+<div class="cont-div">
+    <img class="down-right" src="\images\wallpaper-2.jpg"  >
+</div>
+
+<div>
+    @await Html.PartialAsync("SearchClientPartial", new Client())
+</div>
