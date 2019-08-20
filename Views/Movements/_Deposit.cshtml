@@ -1,13 +1,13 @@
 @model MovementViewModel
-<form asp-action="../Movements/Deposit" method="POST">
+
+<form asp-action="Deposit" asp-controller="Movements" method="POST">
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Depositar en cuenta</label>
-    <select class="form-control" id="exampleFormControlSelect1" asp-for="MovementsType.Id" asp-items="@(new SelectList(Model.ProductTypes, "Id", "name"))"></select>
+    <label for="FormControlSelect">Depositar en cuenta</label>
+    <select class="form-control" id="FormControlSelect" asp-for="Products.Id" asp-items="@(new SelectList(Model.ProductTypes, "Id", "name"))"></select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Monto</label>
+    <label for="FormControlInput">Monto</label>
     <input asp-for="amount" Type="number" class="form-control" id="Importe" placeholder="Importe del Deposito">
   </div>
   <button Type="Submit" class="btn btn-dark">Depositar</button>
-  <input type="hidden" asp-for="Products.Id">
 </form>

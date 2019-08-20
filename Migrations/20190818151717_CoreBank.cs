@@ -116,12 +116,12 @@ namespace AspNetCoreBank.Migrations
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
-                values: new object[] { 1, new DateTime(2019, 8, 15, 16, 51, 33, 535, DateTimeKind.Local), 95699120, "Umanchuk", "Jury" });
+                values: new object[] { 1, new DateTime(2019, 8, 18, 12, 17, 17, 33, DateTimeKind.Local).AddTicks(7914), 95699120, "Umanchuk", "Jury" });
 
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "Date", "Document", "Lastname", "Name" },
-                values: new object[] { 2, new DateTime(2019, 8, 15, 16, 51, 33, 536, DateTimeKind.Local), 95885263, "Perez", "Linda" });
+                values: new object[] { 2, new DateTime(2019, 8, 18, 12, 17, 17, 34, DateTimeKind.Local).AddTicks(6406), 95598062, "Perez", "Linda" });
 
             migrationBuilder.InsertData(
                 table: "MovementsType",
@@ -131,7 +131,7 @@ namespace AspNetCoreBank.Migrations
             migrationBuilder.InsertData(
                 table: "MovementsType",
                 columns: new[] { "Id", "Movements_type", "name", "status" },
-                values: new object[] { 2, 2, "Transferencia", 1 });
+                values: new object[] { 2, 2, "Extracción", 1 });
 
             migrationBuilder.InsertData(
                 table: "ProductTypes",
@@ -146,27 +146,37 @@ namespace AspNetCoreBank.Migrations
             migrationBuilder.InsertData(
                 table: "ProductTypes",
                 columns: new[] { "Id", "Product_type", "name", "status" },
-                values: new object[] { 3, 2, "Prestamo Personal", 3 });
+                values: new object[] { 3, 1, "Cuenta en Dolares", 2 });
+
+            migrationBuilder.InsertData(
+                table: "ProductTypes",
+                columns: new[] { "Id", "Product_type", "name", "status" },
+                values: new object[] { 4, 2, "Prestamo Personal", 3 });
 
             migrationBuilder.InsertData(
                 table: "Movements",
                 columns: new[] { "Id", "MovementsTypeId", "ProductId", "ProductsId", "amount", "date", "status" },
-                values: new object[] { 1, 1, 1, null, 150m, new DateTime(2019, 8, 15, 16, 51, 33, 538, DateTimeKind.Local), 1 });
+                values: new object[] { 1, 1, 1, null, 150m, new DateTime(2019, 8, 18, 12, 17, 17, 36, DateTimeKind.Local).AddTicks(265), 1 });
 
             migrationBuilder.InsertData(
                 table: "Movements",
                 columns: new[] { "Id", "MovementsTypeId", "ProductId", "ProductsId", "amount", "date", "status" },
-                values: new object[] { 2, 2, 1, null, 100m, new DateTime(2019, 8, 15, 16, 51, 33, 538, DateTimeKind.Local), 1 });
+                values: new object[] { 2, 2, 1, null, 100m, new DateTime(2019, 8, 18, 12, 17, 17, 36, DateTimeKind.Local).AddTicks(1103), 1 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ClientId", "Closing_date", "Opening_date", "ProductTypeId", "current_balance", "status" },
-                values: new object[] { 1, 1, null, new DateTime(2019, 8, 15, 16, 51, 33, 537, DateTimeKind.Local), 1, 150m, 1 });
+                values: new object[] { 1, 1, null, new DateTime(2019, 8, 18, 12, 17, 17, 35, DateTimeKind.Local).AddTicks(4839), 1, 150m, 1 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ClientId", "Closing_date", "Opening_date", "ProductTypeId", "current_balance", "status" },
-                values: new object[] { 2, 1, null, new DateTime(2019, 8, 15, 16, 51, 33, 537, DateTimeKind.Local), 2, 100m, 1 });
+                values: new object[] { 3, 2, null, new DateTime(2019, 8, 18, 12, 17, 17, 35, DateTimeKind.Local).AddTicks(5801), 1, 500m, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "ClientId", "Closing_date", "Opening_date", "ProductTypeId", "current_balance", "status" },
+                values: new object[] { 2, 1, null, new DateTime(2019, 8, 18, 12, 17, 17, 35, DateTimeKind.Local).AddTicks(5789), 2, 100m, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movements_MovementsTypeId",

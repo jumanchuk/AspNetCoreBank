@@ -59,13 +59,44 @@ namespace AspNetCoreBank.Controllers
 
                 if (!successful)
                 {
-                    return BadRequest("Could not add item.");
+                    return BadRequest("No se pudo efectuar el deposito.");
                 }
-                return RedirectToAction("Index", "Products", new { ClientId = product.Client.Id, product.Id });
-            }
-            //return RedirectToAction("Index", "Products", new { ClientId = product.Client.Id, product.Id });
-            //return await new ProductsController(_productsService).Index(product.Client.Id, product.Id);
-            //return RedirectToAction("Index", new { ClientId = product.Client.Id, product.Id });
+
+                    return RedirectToAction("Index", "Products", new { ClientId = product.Client.Id, product.Id });
+
+                }
+
+        }
+
+        public async Task<IActionResult> WithDraw(MovementViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index", "Client");
+            var product = await _productsService.GetProductDetailById(model.Products.Id);
+            if (product == null)
+                return RedirectToAction("Index");
+            else
+            {
+                var movement = new Movements
+                {
+                    amount = model.amount,
+                    date = DateTime.Now,
+                    Products = await _productsService.GetProductDetailById(model.Products.Id),
+                    MovementsType = await _movementTypeService.GetByType(2),
+                    status = 1
+                };
+                
+                var successful = await _movementService.AddAsync(movement);
+
+                if (!successful)
+                {
+                    return BadRequest("No se pudo efectuar la Extracción.");
+                }
+
+                    return RedirectToAction("Index", "Products", new { ClientId = product.Client.Id, product.Id });
+
+                }
+
         }
     }
 }

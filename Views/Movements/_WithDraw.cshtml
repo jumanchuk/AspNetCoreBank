@@ -1,0 +1,16 @@
+@model MovementViewModel
+
+<div>
+<form asp-action="WithDraw" asp-controller="Movements" method="POST">
+  <div class="form-group">
+    <label for="FormControlSelect">Extraer de cuenta</label>
+    <select class="form-control" id="FormControlSelect" asp-for="Products.Id" asp-items="@(new SelectList(Model.ProductTypes, "Id", "name"))"></select>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="FormControlInput">Monto</label>
+    <input Type="number" class="form-control"  asp-for="amount" id="Importe" placeholder="Importe del Retiro">
+  </div>
+  <button Type="Submit" class="btn btn-dark"> Extraer </button>
+</form>
+</div>
