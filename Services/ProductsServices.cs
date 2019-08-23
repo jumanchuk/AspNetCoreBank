@@ -36,16 +36,6 @@ namespace AspNetCoreBank.Services
             .ToArrayAsync();
         }
 
-        public async List<Movements> GetProductMovementsBalanceById(int Id)
-        {
-
-            return await _context.Movements
-            .Where(x => x.Id == Id)
-            .GroupBy(x => x.Id == Id)
-            .ToArrayAsync();
-
-        }
-
         public async Task<Movements[]> GetByProductId(int ProductId)
         {
             return await _context.Movements.Where(x => x.Products.Id == ProductId).ToArrayAsync();
