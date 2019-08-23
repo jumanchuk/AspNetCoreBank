@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using AspNetCoreBank.Models;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreBank.Data
 {
-        public class ApplicationDbContext: DbContext
+        public class ApplicationDbContext: IdentityDbContext
     {
             
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)

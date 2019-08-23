@@ -7,6 +7,8 @@ namespace AspNetCoreBank.Models
         public Products ProductDetail { get; set; }
 
         public Movements[] ProductMovements { get; set; }
+
+        public Movements CurrentBalance { get; set; }
         public ProductType[] ProductTypes { get; set; }
     }
 }

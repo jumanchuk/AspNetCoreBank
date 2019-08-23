@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreBank.Models;
 using AspNetCoreBank.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreBank.Controllers
@@ -17,6 +18,7 @@ namespace AspNetCoreBank.Controllers
             _productTypeService = productTypeService;
         }
         
+        [Authorize]
         public async Task<IActionResult> Index(int ClientId, int Id)
         {
             if (ClientId == 0)

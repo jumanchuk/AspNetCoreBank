@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreBank.Models;
 using AspNetCoreBank.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreBank.Controllers
@@ -24,6 +25,7 @@ namespace AspNetCoreBank.Controllers
             _movementTypeService = movementTypeService;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Deposit(int ProductId)
         {
             var model = new MovementViewModel

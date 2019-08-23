@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AspNetCoreBank.Models;
 using AspNetCoreBank.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreBank.Controllers
@@ -11,6 +12,7 @@ namespace AspNetCoreBank.Controllers
 
       public ClientController(IClientService ClientService) => _ClientService = ClientService;
         
+        [Authorize]
         public async Task<IActionResult> Index(int Document)
         {
           

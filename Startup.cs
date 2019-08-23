@@ -43,6 +43,9 @@ namespace AspNetCoreBank
                     .UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
                     .UseLazyLoadingProxies()
             );
+			services.AddDefaultIdentity<IdentityUser>()
+            .AddRoles<IdentityRole>()
+			.AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IProductsService, ProductsService>();
             services.AddScoped<IProductTypeService, ProductTypeService>();
@@ -68,6 +71,8 @@ namespace AspNetCoreBank
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+			
+			app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

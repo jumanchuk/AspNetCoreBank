@@ -19,21 +19,31 @@ namespace AspNetCoreBank.Services
         public async Task<Products[]> GetProductsByClientId(int ClientId)
         {
             return await _context.Products
-            .Where(x => x.Client.Id == ClientId)// Como pasar parametro desde otra vista
+            .Where(x => x.Client.Id == ClientId)
             .ToArrayAsync();
         }
 
         public async Task<Products> GetProductDetailById(int Id)
         {
             return await _context.Products
-            .FirstOrDefaultAsync(x => x.Id == Id);// Como pasar parametro desde otra vista
+            .FirstOrDefaultAsync(x => x.Id == Id);
         }
 
         public async Task<Movements[]> GetProductMovementsById(int Id)
         {
             return await _context.Movements
-            .Where(x => x.Id == Id)// Como pasar parametro desde otra vista
+            .Where(x => x.Id == Id)
             .ToArrayAsync();
+        }
+
+        public async List<Movements> GetProductMovementsBalanceById(int Id)
+        {
+
+            return await _context.Movements
+            .Where(x => x.Id == Id)
+            .GroupBy(x => x.Id == Id)
+            .ToArrayAsync();
+
         }
 
         public async Task<Movements[]> GetByProductId(int ProductId)
