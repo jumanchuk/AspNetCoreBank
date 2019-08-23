@@ -1,4 +1,4 @@
-@model ClientViewModel
+@model ClientsViewModel
 @using Humanizer
 
 @{
@@ -17,20 +17,23 @@ ViewData["Title"] = "Busqueda de Cliente";
                 <td>Fecha de Alta</td>
             </tr>
         </thead>
-        @foreach (var Client in Model.Clients)
+        @if (Model.Clients != null)
         {
-            <tr>
-                <form asp-controller="Products" asp-action="Index" method="POST">
-                    <td>
-                        <button class="btn btn-default glyphicon glyphicon-search" type="submit">
-                        <input type="hidden" name="ClientId" value="@Client.Id" />
-                    </td>
-                    <td>@Client.Document</td>
-                    <td>@Client.Name</td>
-                    <td>@Client.Lastname</td>
-                    <td>@Client.Date.ToString("dd/mm/yyyy")</td>
-                </form>
-            </tr>
+            @foreach (var Client in Model.Clients)
+            {
+                <tr>
+                    <form asp-controller="Products" asp-action="Index" method="POST">
+                        <td>
+                            <button class="btn btn-default glyphicon glyphicon-search" type="submit">
+                            <input type="hidden" name="ClientId" value="@Client.Id" />
+                        </td>
+                        <td>@Client.Document</td>
+                        <td>@Client.Name</td>
+                        <td>@Client.Lastname</td>
+                        <td>@Client.Date.ToString("dd/mm/yyyy")</td>
+                    </form>
+                </tr>
+            }
         }
     </table>    
 </div>

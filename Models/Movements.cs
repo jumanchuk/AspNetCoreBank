@@ -6,7 +6,7 @@ namespace AspNetCoreBank.Models
     public class Movements
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
+        public int ProductsId { get; set; }
         [Required]
         public decimal amount { get; set; }
         public int status { get; set; }

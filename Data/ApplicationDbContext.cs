@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using AspNetCoreBank.Models;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreBank.Data
 {
-        public class ApplicationDbContext: DbContext
+        public class ApplicationDbContext: IdentityDbContext
     {
             
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
@@ -17,7 +17,7 @@ namespace AspNetCoreBank.Data
         public DbSet<Products> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Movements> Movements { get; set; }
-        public DbSet<Movements> MovementsType { get; set; }
+        public DbSet<MovementsType> MovementsType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -35,7 +35,7 @@ namespace AspNetCoreBank.Data
                         Date = DateTime.Now},
                     new Client {
                         Id = 2,
-                        Document = 95885263,
+                        Document = 95598062,
                         Name = "Linda",
                         Lastname = "Perez",
                         Date = DateTime.Now}
@@ -59,6 +59,11 @@ namespace AspNetCoreBank.Data
                         status = 2},
                     new ProductType {
                         Id = 3,
+                        Product_type = 1,
+                        name = "Cuenta en Dolares",
+                        status = 2},
+                    new ProductType {
+                        Id = 4,
                         Product_type = 2,
                         name = "Prestamo Personal",
                         status = 3
@@ -85,6 +90,14 @@ namespace AspNetCoreBank.Data
                         Opening_date = DateTime.Now,
                         ProductTypeId = 2,
                         ClientId = 1
+                        },
+                    new {
+                        Id = 3,
+                        current_balance = (decimal)500,
+                        status = 1,
+                        Opening_date = DateTime.Now,
+                        ProductTypeId = 1,
+                        ClientId = 2
                         });
 
                 builder.Entity<MovementsType>()
@@ -103,7 +116,7 @@ namespace AspNetCoreBank.Data
                         Id = 2,
                         Movements_type=2,
                         status = 1,
-                        name="Transferencia"
+                        name="Extracción"
                         });
 
                 builder.Entity<Movements>()
@@ -114,7 +127,7 @@ namespace AspNetCoreBank.Data
                 .HasData(
                     new {
                         Id = 1,
-                        ProductId=1,
+                        ProductsId=1,
                         MovementsTypeId = 1,
                         amount = (decimal)150,
                         status = 1,
@@ -122,7 +135,7 @@ namespace AspNetCoreBank.Data
                     },
                     new {
                         Id = 2,
-                        ProductId=1,
+                        ProductsId=1,
                         MovementsTypeId = 2,
                         amount = (decimal)100,
                         status = 1,

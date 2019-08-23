@@ -16,11 +16,15 @@ namespace AspNetCoreBank.Services
         {
             _context = context;
         }
-        public async Task<Client[]> GetClient(int Document)
+
+        public async Task<Client> GetById(int Id)
         {
-            return await _context.Clients
-            .Where(x => x.Document == Document)
-            .ToArrayAsync();
+            return await _context.Clients.FirstOrDefaultAsync(x => x.Id == Id);
+        }
+
+        public async Task<Client> GetClient(int Document)
+        {
+            return await _context.Clients.FirstOrDefaultAsync(x => x.Document == Document);
         }
     }
 }

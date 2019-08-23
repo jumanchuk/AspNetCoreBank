@@ -43,8 +43,14 @@ namespace AspNetCoreBank
                     .UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
                     .UseLazyLoadingProxies()
             );
+			services.AddDefaultIdentity<IdentityUser>()
+            .AddRoles<IdentityRole>()
+			.AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IProductsService, ProductsService>();
+            services.AddScoped<IProductTypeService, ProductTypeService>();
+            services.AddScoped<IMovementTypeService, MovementTypeService>();
+            services.AddScoped<IMovementService, MovementService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -65,6 +71,8 @@ namespace AspNetCoreBank
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+			
+			app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
