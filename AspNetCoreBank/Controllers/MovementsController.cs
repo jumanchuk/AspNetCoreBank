@@ -63,7 +63,7 @@ namespace AspNetCoreBank.Controllers
                 {
                     return BadRequest("No se pudo efectuar el deposito.");
                 }
-
+                    _productsService.UpdateProductBalanceById(model.Products.Id,model.amount);
                     return RedirectToAction("Index", "Products", new { ClientId = product.Client.Id, product.Id });
 
                 }
@@ -81,7 +81,7 @@ namespace AspNetCoreBank.Controllers
             {
                 var movement = new Movements
                 {
-                    amount = model.amount,
+                    amount = -model.amount,
                     date = DateTime.Now,
                     Products = await _productsService.GetProductDetailById(model.Products.Id),
                     MovementsType = await _movementTypeService.GetByType(2),
@@ -94,6 +94,7 @@ namespace AspNetCoreBank.Controllers
                 {
                     return BadRequest("No se pudo efectuar la Extracción.");
                 }
+                    _productsService.UpdateProductBalanceById(model.Products.Id,-model.amount);
 
                     return RedirectToAction("Index", "Products", new { ClientId = product.Client.Id, product.Id });
 

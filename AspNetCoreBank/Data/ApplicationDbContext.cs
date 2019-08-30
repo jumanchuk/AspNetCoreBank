@@ -56,18 +56,7 @@ namespace AspNetCoreBank.Data
                         Id = 2,
                         Product_type = 1,
                         name = "Cuenta Corriente",
-                        status = 2},
-                    new ProductType {
-                        Id = 3,
-                        Product_type = 1,
-                        name = "Cuenta en Dolares",
-                        status = 2},
-                    new ProductType {
-                        Id = 4,
-                        Product_type = 2,
-                        name = "Prestamo Personal",
-                        status = 3
-                        });
+                        status = 2});
 
                 builder.Entity<Products>()
                 .Property(e => e.Id)

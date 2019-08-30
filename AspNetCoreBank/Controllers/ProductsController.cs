@@ -27,7 +27,6 @@ namespace AspNetCoreBank.Controllers
             var Products = await _ProductsService.GetProductsByClientId(ClientId);
             if (Id == 0)
                 Id = Products.ToList().FirstOrDefault().Id;
-            _ProductsService.GetProductBalanceById(Id);
             var productDetail = await _ProductsService.GetProductDetailById(Id);
             var productMovements = await _ProductsService.GetByProductId(Id);
             var productTypes = await _productTypeService.GetAll();

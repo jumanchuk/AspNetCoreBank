@@ -11,6 +11,6 @@ namespace AspNetCoreBank.Services
         Task<Products> GetProductDetailById(int Id);
         Task<Movements[]> GetProductMovementsById(int Id);
         Task<Movements[]> GetByProductId(int ProductId);
-        void GetProductBalanceById(int id);
+        void UpdateProductBalanceById(int id, decimal amount);
     }
 }

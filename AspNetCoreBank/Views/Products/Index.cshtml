@@ -27,8 +27,8 @@
         <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-stats"></span> Historial</a></li>
         <li><a data-toggle="tab" href="#option1"><span class="glyphicon glyphicon-save"></span> Depositos</a></li>
         <li><a data-toggle="tab" href="#option2"><span class="glyphicon glyphicon-open"></span> Extracciones</a></li>
-        <li><a data-toggle="tab" href="#option3"><span class="fa fa-money"></span> Prestamos</a></li>
-        <li><a data-toggle="tab" href="#option4"><span class="glyphicon glyphicon-usd"></span> Compra de Divisas</a></li>
+        <!-- <li><a data-toggle="tab" href="#option3"><span class="fa fa-money"></span> Prestamos</a></li>
+        <li><a data-toggle="tab" href="#option4"><span class="glyphicon glyphicon-usd"></span> Compra de Divisas</a></li> -->
       </ul>
 
     <div class="tab-content" style="padding:1%; ">
@@ -63,12 +63,12 @@
       <div id="option2" class="tab-pane fade">
         @await  Html.PartialAsync("../Movements/_WithDraw", new MovementViewModel { Products = Model.ProductDetail, ProductTypes = Model.ProductTypes })
       </div>
-      <div id="option3" class="tab-pane fade">
+      <!-- <div id="option3" class="tab-pane fade" type="hidden">
         <div><p>@await Html.PartialAsync("LoanPartialView")</p></div>
       </div>
-      <div id="option4" class="tab-pane fade">
+      <div id="option4" class="tab-pane fade" type="hidden">
         <div><p>@await Html.PartialAsync("ExchangePartialView ")</p></div>
-      </div>
+      </div> -->
     </div>
 
 </div>

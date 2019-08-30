@@ -41,14 +41,8 @@ namespace AspNetCoreBank.Services
             return await _context.Movements.Where(x => x.Products.Id == ProductId).ToArrayAsync();
         }
 
-        public void GetProductBalanceById(int Id)
+        public void UpdateProductBalanceById(int Id, decimal amount)
         {
-         var movements=(from m in _context.Movements
-            select m)
-            .Where(m => m.Products.Id == Id)
-            .ToList();
-
-            decimal currentBalance=movements.Sum(m => m.amount);
 
             var query = (from prod in _context.Products
             select prod)
@@ -57,7 +51,7 @@ namespace AspNetCoreBank.Services
 
             foreach(Products prod in query)
             {
-                prod.current_balance = currentBalance;
+                prod.current_balance = prod.current_balance + amount;
             }
 
             _context.SaveChanges();
